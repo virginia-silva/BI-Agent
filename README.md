@@ -1,4 +1,4 @@
-# 🚀 BI Agent, DocMind & Expensepilot
+# 🚀 BI Agent 🤖
 
 Bem-vindo ao repositório dos projetos **BI Agent**! Aqui você encontra soluções inteligentes para automação, utilizando tecnologias modernas e integração com o ecossistema Microsoft.
 
