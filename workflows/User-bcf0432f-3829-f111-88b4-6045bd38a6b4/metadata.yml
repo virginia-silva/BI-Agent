@@ -1,0 +1,30 @@
+﻿jsonFileName: workflows/User-bcf0432f-3829-f111-88b4-6045bd38a6b4/workflow.json
+workflowId: bcf0432f-3829-f111-88b4-6045bd38a6b4
+name: User
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0.0.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 0
+primaryEntity: none

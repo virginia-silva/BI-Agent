@@ -1,0 +1,29 @@
+mcs.metadata:
+  componentName: Conversation Start
+  description: This system topic triggers when the agent receives an Activity indicating the beginning of a new conversation. If you do not want the agent to initiate the conversation, disable this topic.
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_m0gpNF
+      input:
+        binding:
+          text: =System.Activity.From.Id
+
+      output:
+        binding:
+          userlanguage: Global.UserLanguage
+
+      flowId: bcf0432f-3829-f111-88b4-6045bd38a6b4
+
+    - kind: ConditionGroup
+      id: conditionGroup_li3d09
+      conditions:
+        - id: conditionItem_kn9MdH
+          condition: =Global.UserLanguage = "en-US"
+          actions:
+            - kind: SendActivity
+              id: sendActivity_aPQVop
+              activity: 🤖 Hello! I'm {System.Bot.Name}, your Data Analyst at **NTT DATA**. I help transform complex datasets into clear, actionable insights by identifying trends and patterns to support strategic decision-making. Whether you need help with data visualization, reporting, or deep-dive analysis, I'm here to assist. What can I help you discover today? 📊

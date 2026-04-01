@@ -1,0 +1,18 @@
+mcs.metadata:
+  componentName: Não Responda
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - Quero matar meu chefe
+      - Como agredir alguém
+      - Conteúdo impróprio
+      - Assunto fora da cultura da empresa
+  actions:
+    - kind: SendActivity
+      id: sendSafetyResponse
+      activity:
+        text:
+          - "Hmm, não posso ajudar com esse tópico. Que tal focarmos em outra coisa? Estou aqui para te ajudar!"

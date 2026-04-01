@@ -1,0 +1,30 @@
+﻿displayName: BI Agent
+schemaName: ntt_agentwcVQnw
+accessControlPolicy: GroupMembership
+authenticationMode: Integrated
+authenticationTrigger: Always
+configuration:
+  settings:
+    GenerativeActionsEnabled: true
+
+  isAgentConnectable: true
+  gPTSettings:
+    defaultSchemaName: ntt_agentwcVQnw.gpt.default
+
+  aISettings:
+    useModelKnowledge: false
+    isFileAnalysisEnabled: false
+    isSemanticSearchEnabled: false
+    contentModeration: Low
+    optInUseLatestModels: false
+
+  recognizer:
+    kind: GenerativeAIRecognizer
+
+template: default-2.1.0
+language: 1033
+supportedLanguages:
+  - 1034
+  - 1046
+  - 2070
+  - 21514

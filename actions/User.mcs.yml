@@ -1,0 +1,22 @@
+mcs.metadata:
+  componentName: User
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: text
+    value: =System.Activity.From.Id
+
+modelDescription: |-
+  Returned Data: 
+  Language : (EX: en-US)
+
+  WHEN TO USE: Required at the beginning of the conversation to identify the user's 'Zone' before answering any technical questions.
+outputs:
+  - propertyName: userlanguage
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: bcf0432f-3829-f111-88b4-6045bd38a6b4
+
+outputMode: Specific
+triggerCondition: false

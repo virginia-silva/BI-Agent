@@ -1,0 +1,116 @@
+﻿{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "8e2531cc-b32a-441c-9299-1cce40902d5f"
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "UserID",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Unique identifier of the logged-in user captured in the channel.",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "HTTP": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "ab207bce-6ab8-430d-aa34-34574c18803c"
+          },
+          "type": "Http",
+          "inputs": {
+            "uri": "https://graph.microsoft.com/v1.0/me",
+            "method": "GET",
+            "headers": {
+              "Authorization": "Removido_para_proteção"
+            }
+          }
+        },
+        "Body": {
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fa8d5a54-4b7e-45a3-8e88-281bbb61a522"
+          },
+          "type": "Compose",
+          "inputs": "@body(\u0027HTTP\u0027)"
+        },
+        "Language": {
+          "runAfter": {
+            "Body": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d7428bef-ae1e-4a5f-bd53-9376d6a7a443"
+          },
+          "type": "Compose",
+          "inputs": "@body(\u0027HTTP\u0027)?[\u0027preferredLanguage\u0027]"
+        },
+        "Respond_to_Copilot": {
+          "runAfter": {
+            "Language": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "810cc4ca-db8a-4b23-ac27-49c09e010660"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userlanguage": {
+                  "title": "UserLanguage",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "userlanguage": "@{outputs(\u0027Language\u0027)}"
+            }
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}
